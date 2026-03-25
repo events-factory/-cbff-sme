@@ -4,24 +4,29 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-
-const links = [
-  { href: "/about",        label: "About" },
-  { href: "/architecture", label: "Architecture" },
-  { href: "/program",      label: "Program" },
-  { href: "/partners",     label: "Partners" },
-  { href: "/sponsorship",  label: "Sponsor" },
-];
-
-const eventLinks = [
-  { href: "/program",      label: "Forum Program",        desc: "Full 3-day agenda" },
-  { href: "/architecture", label: "Deal Room",            desc: "Investment marketplace" },
-  { href: "/partners",     label: "Strategic Partners",   desc: "Institutional ecosystem" },
-  { href: "/sponsorship",  label: "Sponsorship",          desc: "Partnership opportunities" },
-  { href: "/register",     label: "Register to Attend",   desc: "Express your interest" },
-];
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/locales/translations";
 
 export default function Navbar() {
+  const { lang, setLang } = useLanguage();
+  const T = t[lang].nav;
+
+  const links = [
+    { href: "/about",        label: T.about },
+    { href: "/architecture", label: T.architecture },
+    { href: "/program",      label: T.program },
+    { href: "/partners",     label: T.partners },
+    { href: "/sponsorship",  label: T.sponsor },
+  ];
+
+  const eventLinks = [
+    { href: "/program",      label: T.forumProgram,       desc: T.forumProgramDesc },
+    { href: "/architecture", label: T.dealRoom,            desc: T.dealRoomDesc },
+    { href: "/partners",     label: T.strategicPartners,   desc: T.strategicPartnersDesc },
+    { href: "/sponsorship",  label: T.sponsorship,         desc: T.sponsorshipDesc },
+    { href: "/register",     label: T.registerToAttend,    desc: T.registerToAttendDesc },
+  ];
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false);
@@ -35,7 +40,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (eventsRef.current && !eventsRef.current.contains(e.target as Node)) {
@@ -100,7 +104,7 @@ export default function Navbar() {
                   transition: "color .2s",
                 }}
               >
-                Events
+                {T.events}
                 <ChevronDown size={13} style={{ transition: "transform .2s", transform: eventsOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
               </button>
 
@@ -147,8 +151,28 @@ export default function Navbar() {
                 transition: "background .2s",
               }}
             >
-              Register
+              {T.register}
             </Link>
+
+            {/* Language toggle */}
+            <div style={{ display: "flex", alignItems: "center", marginLeft: 12, border: "1px solid rgba(201,151,43,.4)", borderRadius: 2, overflow: "hidden" }}>
+              {(["en", "fr"] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  style={{
+                    fontFamily: "var(--font-poppins), sans-serif",
+                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                    textTransform: "uppercase", padding: "7px 12px",
+                    background: lang === l ? "var(--gold)" : "transparent",
+                    color: lang === l ? "var(--white)" : "rgba(255,255,255,.6)",
+                    border: "none", cursor: "pointer", transition: "all .2s",
+                  }}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Mobile toggle */}
@@ -204,7 +228,7 @@ export default function Navbar() {
                 background: "none", border: "none", cursor: "pointer",
               }}
             >
-              Events
+              {T.events}
               <ChevronDown size={13} style={{ transition: "transform .2s", transform: mobileEventsOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </button>
             {mobileEventsOpen && (
@@ -239,8 +263,29 @@ export default function Navbar() {
                 color: "var(--gold)", textDecoration: "none",
               }}
             >
-              Register
+              {T.register}
             </Link>
+
+            {/* Mobile language toggle */}
+            <div style={{ display: "flex", padding: "12px 24px", gap: 8 }}>
+              {(["en", "fr"] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  style={{
+                    fontFamily: "var(--font-poppins), sans-serif",
+                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                    textTransform: "uppercase", padding: "6px 16px",
+                    background: lang === l ? "var(--gold)" : "transparent",
+                    color: lang === l ? "var(--white)" : "rgba(255,255,255,.6)",
+                    border: "1px solid rgba(201,151,43,.4)", cursor: "pointer",
+                    borderRadius: 2,
+                  }}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
