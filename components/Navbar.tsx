@@ -14,17 +14,12 @@ export default function Navbar() {
   const links = [
     { href: "/about",        label: T.about },
     { href: "/architecture", label: T.architecture },
-    { href: "/program",      label: T.program },
     { href: "/partners",     label: T.partners },
     { href: "/sponsorship",  label: T.sponsor },
   ];
 
   const eventLinks = [
-    { href: "/program",      label: T.forumProgram,       desc: T.forumProgramDesc },
-    { href: "/architecture", label: T.dealRoom,            desc: T.dealRoomDesc },
-    { href: "/partners",     label: T.strategicPartners,   desc: T.strategicPartnersDesc },
-    { href: "/sponsorship",  label: T.sponsorship,         desc: T.sponsorshipDesc },
-    { href: "/register",     label: T.registerToAttend,    desc: T.registerToAttendDesc },
+    { href: "#", label: "Cross-Border Finance Forum for SMEs 2026", desc: "", external: true },
   ];
 
   const [open, setOpen] = useState(false);
