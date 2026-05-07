@@ -95,7 +95,7 @@ export default function ArchitecturePage() {
       <section style={{ padding: "60px 0", textAlign: "center" }}>
         <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 24px" }}>
           <p style={{ fontSize: 16, color: "var(--muted)", marginBottom: 24 }}>{T.ctaText}</p>
-          <Link href="/program" style={{ display: "inline-block", padding: "13px 32px", fontFamily: "var(--font-poppins),sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", borderRadius: 2, background: "var(--gold)", color: "var(--white)", textDecoration: "none" }}>
+          <Link href="https://event.cbffsme.com/" style={{ display: "inline-block", padding: "13px 32px", fontFamily: "var(--font-poppins),sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", borderRadius: 2, background: "var(--gold)", color: "var(--white)", textDecoration: "none" }}>
             {C.viewForumProgram}
           </Link>
         </div>

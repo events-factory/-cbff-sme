@@ -19,7 +19,7 @@ export default function Navbar() {
   ];
 
   const eventLinks = [
-    { href: "#", label: "Cross-Border Finance Forum for SMEs 2026", desc: "", external: true },
+    { href: "https://event.cbffsme.com/", label: "Cross-Border Finance Forum for SMEs 2026", desc: "", external: true },
   ];
 
   const [open, setOpen] = useState(false);
@@ -135,7 +135,7 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/register"
+              href="https://event.cbffsme.com/"
               style={{
                 fontFamily: "var(--font-poppins), sans-serif",
                 fontSize: 11.5, fontWeight: 700, letterSpacing: 1,
@@ -248,7 +248,7 @@ export default function Navbar() {
             )}
 
             <Link
-              href="/register"
+              href="https://event.cbffsme.com/"
               onClick={() => setOpen(false)}
               style={{
                 display: "block", padding: "12px 24px",
