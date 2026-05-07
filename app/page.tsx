@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { t } from "@/locales/translations";
 
 const exploreIcons = [Globe, Layers, Calendar, Users, Briefcase, Mail];
-const exploreHrefs = ["/about", "/architecture", "/program", "/partners", "/sponsorship", "/register"];
+const exploreHrefs = ["/about", "/architecture", "https://event.cbffsme.com/", "/partners", "/sponsorship", "https://event.cbffsme.com/"];
 const consortiumLogos = ["/net-kigali.webp", "/rebird_logo.png", null, null];
 const consortiumInitials = [null, null, "SBPME-UEMOA", "CC"];
 
@@ -64,10 +64,10 @@ export default function Home() {
         </div>
 
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap", justifyContent: "center", position: "relative" }}>
-          <Link href="/register" style={{ display: "inline-block", padding: "13px 32px", fontFamily: "var(--font-poppins),sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", borderRadius: 2, background: "var(--gold)", color: "var(--white)", textDecoration: "none" }}>
+          <Link href="https://event.cbffsme.com/" style={{ display: "inline-block", padding: "13px 32px", fontFamily: "var(--font-poppins),sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", borderRadius: 2, background: "var(--gold)", color: "var(--white)", textDecoration: "none" }}>
             {C.registerNow}
           </Link>
-          <Link href="/program" style={{ display: "inline-block", padding: "13px 32px", fontFamily: "var(--font-poppins),sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", borderRadius: 2, border: "2px solid var(--white)", color: "var(--white)", textDecoration: "none" }}>
+          <Link href="https://event.cbffsme.com/" style={{ display: "inline-block", padding: "13px 32px", fontFamily: "var(--font-poppins),sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", borderRadius: 2, border: "2px solid var(--white)", color: "var(--white)", textDecoration: "none" }}>
             {C.viewProgram}
           </Link>
         </div>
@@ -168,7 +168,7 @@ export default function Home() {
             {T.exploreCards.map((c, idx) => {
               const Icon = exploreIcons[idx];
               return (
-                <Link key={exploreHrefs[idx]} href={exploreHrefs[idx]} style={{ display: "block", border: "1px solid var(--border)", borderTop: "3px solid var(--gold)", padding: "28px 24px", textDecoration: "none" }}>
+                <Link key={idx} href={exploreHrefs[idx]} style={{ display: "block", border: "1px solid var(--border)", borderTop: "3px solid var(--gold)", padding: "28px 24px", textDecoration: "none" }}>
                   <div style={{ width: 44, height: 44, borderRadius: 6, background: "var(--light)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
                     <Icon size={20} color="var(--gold)" />
                   </div>
